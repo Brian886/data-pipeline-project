@@ -1,5 +1,4 @@
 # Name: Chang Jia Qian
-# Neptun: ANQSCL 
 # Title: Final Project (Agriculture Data Pipeline)
 
 ## Business Goal of the project:
