@@ -33,26 +33,21 @@ yeild: amount of crop produced per unit area of land
 
 # Step 1: Create S3 bucket
 <img width="921" height="484" alt="image" src="https://github.com/user-attachments/assets/7ff7ee4d-ee8d-419d-a3b9-f0ec48403a3c" />
-
-
 S3 bucket was created to store data 
 
 # Step 2: Create folders within S3 bucket
-![alt text](<Folders created .png>)
-
+<img width="693" height="440" alt="image" src="https://github.com/user-attachments/assets/18740f73-e7ce-4e18-ad65-b3f4293f0fe8" />
 Folders was created to seperate raw data and data that were processed. 
 
 # Step 3: Upload CSV file to S3 bucket
-![alt text](<Data uploaded to S3.png>)
-
+<img width="1336" height="336" alt="image" src="https://github.com/user-attachments/assets/70085f0c-4f47-4ee9-a7a2-062843b9f139" />
 
 # Step 4: Create a Glue Database
-![alt text](<Glue Database Created.png>)
-
+<img width="1072" height="212" alt="image" src="https://github.com/user-attachments/assets/d67e9a09-c1d8-458c-8883-144191507ca8" />
 A logical container for metadata. This will be helpful when storing data that can be used to do analysis on.
 
 # Step 5: Create crawler and run it
-![alt text](<Crawler created and ran successfully.png>)
+<img width="1056" height="318" alt="image" src="https://github.com/user-attachments/assets/1c1598db-8e96-4733-acd9-9a0e0a11cf60" />
 Use it to extract the data
 
 # Step 6: Query Data using Athena
@@ -61,26 +56,26 @@ SELECT *
 FROM raw_historical
 LIMIT 10;
 ```
-![alt text](<Query result 1.png>)
+<img width="948" height="485" alt="image" src="https://github.com/user-attachments/assets/8f0760a2-5212-48d1-9e89-8355954220d2" />
 This is to test if the crawler could work well. 
 
 # Step 7: Create ETL Job
-![alt text](<ETL job create.png>)
+<img width="1086" height="290" alt="image" src="https://github.com/user-attachments/assets/d6d75cb5-c310-4e7b-b85e-3d2c5c40f8e3" />
 ETL job is created to clean and flatten the data
 
 # Step 8: Visual creation in ETL Job
-![alt text](<Visual creation ELT Job.png>)
+<img width="518" height="380" alt="image" src="https://github.com/user-attachments/assets/de68593c-b49d-4e56-b89c-d0cfdbb15cd3" />
 This part shows how ETL job is cleaning the data by changing the format of the data deriving new column. Duplicates were removed too
 
 # Step 9: Successfully Run ETL job
-![alt text](<Successfully run ETL job.png>)
+<img width="1035" height="510" alt="image" src="https://github.com/user-attachments/assets/a0172026-985b-4bde-a891-c076054e52b4" />
 
 # Step 10: Create Lambda function
-![alt text](<Create Lamda function.png>)
+<img width="892" height="418" alt="image" src="https://github.com/user-attachments/assets/96a74a3b-e5bc-4e3d-8e50-205cf41193dc" />
 This is created to help retrieve data from the weather api.
 
 # Step 11: Create EventBridge
-![alt text](<EventBridge created.png>)
+<img width="881" height="434" alt="image" src="https://github.com/user-attachments/assets/f63f1e07-9f0c-46d9-a494-95d772924d42" />
 This EventBridge is created as it acts like a trigger to retrieve updated weekly weather data. 
 
 # Step 12: Retrieve Data from Weather API with Lambda
@@ -156,16 +151,15 @@ def lambda_handler(event, context):
         "body": "Weather and solar data saved"
     }
 ```
-![alt text](<Successfully run Lambda.png>)
+<img width="703" height="241" alt="image" src="https://github.com/user-attachments/assets/1f839214-14e2-4a53-9678-88762c8342dd" />
 This code helps to retreive up to date data about temperature and precipitation. 
 
 # Step 13: Create Crawler for weather API
-![alt text](<Crawler weather created.png>)
+<img width="439" height="268" alt="image" src="https://github.com/user-attachments/assets/b2471f5a-494a-491f-b372-5f69006a7772" />
 To retrieve data from S3 and store it in a database
 
 # Step 14: Table created from weather crawler
-![alt text](<Weather table created.png>)
-
+<img width="723" height="399" alt="image" src="https://github.com/user-attachments/assets/7da9c318-2727-49c7-a360-e4b2ff032466" />
 ```
 SELECT
     location,
@@ -235,7 +229,7 @@ SELECT *
 FROM Processed.crops_weather
 LIMIT 10;
 ```
-![alt text](<Query result 5.png>)
+<img width="935" height="413" alt="image" src="https://github.com/user-attachments/assets/d077398b-8234-48a3-a266-154300b81cc3" />
 
 # Step 18:  Do analysis
 
@@ -248,7 +242,7 @@ FROM processed.crops_weather
 GROUP BY crops
 ORDER BY avg_yield DESC;
 ```
-![alt text](<Query result (Average Yield by Crop).png>)
+<img width="713" height="487" alt="image" src="https://github.com/user-attachments/assets/a7f70df2-08ad-461f-9918-22f67fc212ac" />
 
 The result shows the the average unit produce per area of land of each different crop. 
 
@@ -262,7 +256,7 @@ FROM processed.crops_weather
 GROUP BY crops
 ORDER BY avg_yield DESC;
 ```
-![alt text](<Query result (Temperature Impact on Yield).png>)
+<img width="768" height="489" alt="image" src="https://github.com/user-attachments/assets/7452aea5-5aa1-4114-8ebc-87f0904d4d43" />
 For example, to get an average yield for Cocoa, an average temperature of 23.59 degree celcius
 
 
@@ -276,7 +270,7 @@ FROM processed.crops_weather
 GROUP BY crops, "soil type"
 ORDER BY crops ASC, avg_yield DESC;
 ```
-![alt text](<Query result (Best Soil Type per Crop).png>)
+<img width="867" height="458" alt="image" src="https://github.com/user-attachments/assets/2b3e2b2f-49fc-43fb-9918-7072feb554ba" />
 For example, if we want to have the highest yield to grow Arecanut, we can use Sandy Loam soil type to grow it. 
 
 # Irrigation method efficiency
@@ -288,7 +282,7 @@ FROM processed.crops_weather
 GROUP BY irrigation
 ORDER BY avg_yield DESC;
 ```
-![alt text](<Query result (Irrigation Method Efficiency).png>)
+<img width="758" height="290" alt="image" src="https://github.com/user-attachments/assets/b7e8bd62-68ab-449c-9d6e-ed077395c1cc" />
 
 This result shows the average yield of crop produced based on the 3 different irrigation method produced grouped by the irrigation method. 
 
@@ -302,7 +296,7 @@ FROM processed.crops_weather
 GROUP BY crops
 ORDER BY avg_sunshine_hours DESC;
 ```
-![alt text](<Query result (sunshine coverage).png>)
+<img width="819" height="491" alt="image" src="https://github.com/user-attachments/assets/44a8c1a7-b66d-4336-8ee1-687aeeb6baa3" />
 Example, to get an average of 51247 cotton per area, an average of 10.41 hours of sunshine are needed per day.  
 
 # Crops yield based on evaporation
@@ -315,7 +309,6 @@ FROM processed.crops_weather
 GROUP BY crops
 ORDER BY avg_evaporation_mm DESC;
 ```
-![alt text](<Query result (evaporation).png>)
-
+<img width="838" height="494" alt="image" src="https://github.com/user-attachments/assets/f63d9f4e-4e91-4953-adc8-81fc6f1c854c" />
 Example, to get an average of 11301.27 of Pepper per area, an average of 5.11 mm  of evaporated water are needed. 
 
