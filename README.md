@@ -32,7 +32,8 @@ By leveraging cloud-native AWS services, the project demonstrates how scalable d
 yeild: amount of crop produced per unit area of land
 
 # Step 1: Create S3 bucket
-![alt text](<S3 bucket created .png>)
+<img width="921" height="484" alt="image" src="https://github.com/user-attachments/assets/7ff7ee4d-ee8d-419d-a3b9-f0ec48403a3c" />
+
 
 S3 bucket was created to store data 
 
